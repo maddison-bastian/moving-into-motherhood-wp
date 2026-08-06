@@ -345,7 +345,21 @@ header.wp-block-template-part {
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/twentytwentyfour/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 <script data-wp-router-options='{"loadOnClientNavigation":true}' fetchpriority="low" id="@wordpress/block-library/navigation/view-js-module" src="/wp-includes/js/dist/script-modules/block-library/navigation/view.min.js?ver=96a846e1d7b789c39ab9" type="module"></script>
-<style type="text/css" media="screen"></style><script id="wp-emoji-settings" type="application/json">
+<style type="text/css" media="screen"></style><script>(function() {
+  let lastScroll = 0;
+  const header = document.querySelector('header');
+  if (!header) return;
+
+  window.addEventListener('scroll', function() {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      header.classList.add('mim-header-hidden');
+    } else {
+      header.classList.remove('mim-header-hidden');
+    }
+    lastScroll = currentScroll;
+  });
+})();</script><script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js?ver=7.0.2"}}
 </script>
 <script type="module">
